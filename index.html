@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1 id="question"></h1>
+        <ul id="list"></ul>
+    <script>
+        function init() {
+            arrayQuestion = []
+            fetch("http://127.0.0.1:8080/question").then(res => res.json()).then(data => {
+                let msg = ""
+                //data.forEach(item => {
+                //    msg += `<li></li>`
+                //})
+                //var ul = document.getElementById("list")
+                //ul.innerHTML(msg)
+                arrayQuestion = data
+                show(arrayQuestion[0])
+            })
+        }
+        function show(q) {
+            var ques = document.getElementById("question")
+            ques.innerHTML(q.content);
+        }
+    </script>
+    </body>
+    
+</html>
